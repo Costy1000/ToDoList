@@ -14,7 +14,7 @@
 </head>
 <body>
 	
-	<div class="create">
+	<div id="create">
 	<div class="input">
 	<div class="title">
 		<h4>Title</h4>
@@ -27,21 +27,25 @@
 	</div>
 	<div class="select">
 		
-	M/D/Y	<input type="text" id="datepicker">
+		<p class="pdate">M/D/Y</p>	
+	<input type="text" id="datepicker">
 	</div>
 	<div class="hour">
-	Hour <select id="hour">
+		<p class="phour">Hour</p> 
+	   <select id="hour">
 	   
 	     </select>
 	</div>
 	<div class="minutes">
-	Minutes <select id="minutes">
-		    </select>
+		<p class="pminutes">Minutes</p> 
+	 <select id="minutes">
+    </select>
 	</div>
 	</form>
 	<div class="button">
 		<button onclick="create() ">Create</button>
 	</div>
+	
 	</div>
 	
   <script>

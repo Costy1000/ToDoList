@@ -6,16 +6,24 @@ function create(){
   var input = document.getElementById("title-input").value;
   var inputData = document.getElementById("datepicker").value;
   if(input != "" && inputData != ""){ ///daca input nu este gol
-	 
+	var createId = document.getElementById("create"); 
 	var create= document.createElement("DIV");
 	var attribute = create.setAttribute("class", "item");
+	  
+	//=================================span and close========================
+	var span = document.createElement("SPAN");
+	var close = span.setAttribute("class", "close");  
+	var text =  document.createTextNode("\u2716");
+	
+	create.appendChild(span);
+	span.appendChild(text);
 	
 	  
 	  
 //create H1 element
     var createH1 = document.createElement("H1");
 	create.appendChild(createH1);
-	var textnode = document.createTextNode(input);
+	  var textnode = document.createTextNode(input);
 	createH1.appendChild(textnode);  
 	input = document.getElementById("title-input").value = ""; ///// dupa ce dai click inputul este gol
 	  // create P3 element
@@ -28,19 +36,20 @@ function create(){
 	 create.appendChild(createP);
 	 
 	 x = numberCount++;
-	
-	 
+
 	  
          
 		
 	  
 	  
-	document.body.appendChild(create);
-	myFunction2();
+	createId.appendChild(create);
 	
+	myFunction2();
+	 
+
   }
 	else{
-		alert("Input must be filled out")
+		alert("Title and date  must be filled out")
 	}
 	
 	
@@ -56,10 +65,13 @@ function myFunction2(){
 	   var hourOptions = document.getElementById("hour").options;
 	   var minutesIndex = document.getElementById("minutes").selectedIndex;
 	  var minutesOptions = document.getElementById("minutes").options;
+	document.getElementsByClassName("close")[x].addEventListener("click", function(){
+     this.parentNode.style.display = "none";  
+	});
 	  var hourText = hourOptions[hourIndex].text;  
 	  var minutesText = minutesOptions[minutesIndex].text; 
         var newCountDownDate = new Date( inputData + " "  + hourText + ":" + minutesText).getTime();
-	     var item3 =  document.getElementsByClassName("item3")[x].innerHTML =" Time Date: " +  inputData +  " " + hourText + ":" + minutesText;
+	     var item3 =  document.getElementsByClassName("item3")[x].innerHTML = " Time Date: " +  inputData +  " " + hourText + ":" + minutesText;
 	    inputData = document.getElementById("datepicker").value = "";
 	    hourOptions = document.getElementById("hour").selectedIndex= "00";
 	    minutesOptions = document.getElementById("minutes").selectedIndex= "00";
@@ -78,15 +90,16 @@ setInterval(function(){
 
 		item2.innerHTML  = "Time left: " +  days + "d "  + hours + "h " + minutes + "m " + seconds +  "s";
 	    
-
 		if(distance < 0){
-		item2.innerHTML = "Expired";
+		  item2.parentElement.style.display = "none";
 		}
 	   
 		},1000);
-	  
+	
+	   
 	}
 	
-
+	
+	 
 
 	
