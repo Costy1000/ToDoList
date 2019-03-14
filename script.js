@@ -1,13 +1,30 @@
  var numberCount  = 0;
 var x;
 
+
 function create(){
   	
   var input = document.getElementById("title-input").value;
   var inputData = document.getElementById("datepicker").value;
-  if(input != "" && inputData != ""){ ///daca input nu este gol
-	var createId = document.getElementById("create"); 
+  if(input != "" && inputData != ""){ ///if input and inputData is not empty
+	var createId = document.getElementById("create");
+	    //===========================================================futureDate===========================
+	var  inputData = document.getElementById("datepicker").value;
+	
+	  var    hourIndex = document.getElementById("hour").selectedIndex;
+	  var  hourOptions = document.getElementById("hour").options;
+	  var  minutesIndex = document.getElementById("minutes").selectedIndex;
+	  var minutesOptions = document.getElementById("minutes").options;
+	  var hourText = hourOptions[hourIndex].text;  
+	  var minutesText = minutesOptions[minutesIndex].text;
+	  var date= new Date();
+	   var futureDate = new Date( inputData + " "  + hourText + ":" + minutesText).getTime();
+    if(futureDate > date){ //if futureDate is bigger then actual date create DIV element else alert 'You must to introduce a future date'
 	var create= document.createElement("DIV");
+	}
+	  else{
+		  alert("You must to introduce a future date")
+	  }
 	var attribute = create.setAttribute("class", "item");
 	  
 	//=================================span and close========================
@@ -20,13 +37,13 @@ function create(){
 	
 	  
 	  
-//create H1 element
-    var createH1 = document.createElement("H1");
-	create.appendChild(createH1);
+//create H2 element
+    var createH2 = document.createElement("H2");
+	create.appendChild(createH2);
 	  var textnode = document.createTextNode(input);
-	createH1.appendChild(textnode);  
-	input = document.getElementById("title-input").value = ""; ///// dupa ce dai click inputul este gol
-	  // create P3 element
+	createH2.appendChild(textnode);  
+	input = document.getElementById("title-input").value = ""; 
+	  // create P element with class  item3
 	 var createP3 = document.createElement("P");
 	 var attributeP3 = createP3.setAttribute("class", "item3");
 	 create.appendChild(createP3);
@@ -35,13 +52,8 @@ function create(){
 	 var attributeP = createP.setAttribute("class", "item2");
 	 create.appendChild(createP);
 	 
-	 x = numberCount++;
+	 x = numberCount++; //x represent the number of 'item2' and 'item3' classes if you want to have more tasks
 
-	  
-         
-		
-	  
-	  
 	createId.appendChild(create);
 	
 	myFunction2();
@@ -54,24 +66,28 @@ function create(){
 	
 	
 }
- //==============================================================Function2============================================
 
+
+ //==============================================================Function2============================================
+  /// in myFunction2 we will put the dates (Task Date and Time Left) in class 'item'
 function myFunction2(){
-                        
+      
 	
-	   var inputData = document.getElementById("datepicker").value;
+	  inputData = document.getElementById("datepicker").value;
 	
-	   var hourIndex = document.getElementById("hour").selectedIndex;
-	   var hourOptions = document.getElementById("hour").options;
-	   var minutesIndex = document.getElementById("minutes").selectedIndex;
-	  var minutesOptions = document.getElementById("minutes").options;
+	    hourIndex = document.getElementById("hour").selectedIndex;
+	    hourOptions = document.getElementById("hour").options;
+	    minutesIndex = document.getElementById("minutes").selectedIndex;
+	   minutesOptions = document.getElementById("minutes").options;
+	
 	document.getElementsByClassName("close")[x].addEventListener("click", function(){
      this.parentNode.style.display = "none";  
 	});
 	  var hourText = hourOptions[hourIndex].text;  
-	  var minutesText = minutesOptions[minutesIndex].text; 
+	  var minutesText = minutesOptions[minutesIndex].text;
+	
         var newCountDownDate = new Date( inputData + " "  + hourText + ":" + minutesText).getTime();
-	     var item3 =  document.getElementsByClassName("item3")[x].innerHTML = " Time Date: " +  inputData +  " " + hourText + ":" + minutesText;
+	     var item3 =  document.getElementsByClassName("item3")[x].innerHTML = " Task Date: " +  inputData +  " " + hourText + ":" + minutesText;
 	    inputData = document.getElementById("datepicker").value = "";
 	    hourOptions = document.getElementById("hour").selectedIndex= "00";
 	    minutesOptions = document.getElementById("minutes").selectedIndex= "00";
@@ -95,9 +111,9 @@ setInterval(function(){
 		}
 	   
 		},1000);
-	
-	   
 	}
+	   
+	
 	
 	
 	 

@@ -29,6 +29,7 @@ body{
 #title-input {
 	font-size: 25px;
 	font-family: 'Roboto', sans-serif;
+	outline: none;
 }
 .title, #title-input{
 	
@@ -108,6 +109,7 @@ body{
 	border-top: 2px solid hsl(0, 0%, 85%);
 	border-bottom: 2px solid hsl(0, 0%, 85%) ;
 	position: relative;
+	
 }
 .close{
 	position: absolute;
