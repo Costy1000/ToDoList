@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+	 <title>todolist</title>
+	 <meta charset="utf-8">
+	 <meta name="viewport" content="width=device-width, initial-scale=1">
+	 <link rel="stylesheet" type="text/css" href="main.css">
+	
+	 <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+  <script src="//code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<script src="script.js"></script>
+</head>
+<body>
+	
+	<div class="create">
+	<div class="input">
+	<div class="title">
+		<h4>Title</h4>
+	</div>
+		<textarea id="title-input" ></textarea>
+	</div>
+	<form id="form-date" >
+	<div class="date">
+	   Set the Date
+	</div>
+	<div class="select">
+		
+	M/D/Y	<input type="text" id="datepicker">
+	</div>
+	<div class="hour">
+	Hour <select id="hour">
+	   
+	     </select>
+	</div>
+	<div class="minutes">
+	Minutes <select id="minutes">
+		    </select>
+	</div>
+	</form>
+	<div class="button">
+		<button onclick="create() ">Create</button>
+	</div>
+	</div>
+	
+  <script>
+	$( function() {
+    $( "#datepicker" ).datepicker();
+  } );  
+	/*===========================================================Title=======================================================*/
+	
+	  
+	  
+	  
+	  
+	  
+	  /*=========================================================DATE===================================================*/
+var i = 1;
+var texthour = "";
+var textminutes = "";
+for( i = 0; i <= 23; i++ ){
+	if(i<10){
+	texthour+= "<option>" + "0" + i + "</option>"  + "<br>";
+	}
+	else{
+	  	texthour+= "<option>" + i + "</option>"  + "<br>";
+	}
+}
+ document.getElementById("hour").innerHTML = texthour; 
+
+for( i = 0; i <= 59 ; i++ ){
+	if(i<10){
+		textminutes+= "<option>" + "0" + i + "</option>"  + "<br>";
+	}
+	else{
+	textminutes+= "<option>" + i + "</option>"  + "<br>";
+	}
+	
+}
+ document.getElementById("minutes").innerHTML = textminutes; 
+  </script>
+</body>
+</html>
