@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 	 <title>todolist</title>
 	 <meta charset="utf-8">
@@ -71,8 +71,13 @@ for( i = 0; i <= 23; i++ ){
 	  	texthour+= "<option>" + i + "</option>"  + "<br>";
 	}
 }
- document.getElementById("hour").innerHTML = texthour; 
-
+ document.getElementById("hour").innerHTML = texthour;
+	var date = new Date();
+	var gHours = date.getHours();
+var hourIndex = 	document.getElementById("hour").selectedIndex;
+var hourOptions = 	document.getElementById("hour").options;
+	  hourOptions[hourIndex].text = gHours;
+ /*document.getElementById("hour").selectedIndex.text = "10";*/
 for( i = 0; i <= 59 ; i++ ){
 	if(i<10){
 		textminutes+= "<option>" + "0" + i + "</option>"  + "<br>";
@@ -83,6 +88,11 @@ for( i = 0; i <= 59 ; i++ ){
 	
 }
  document.getElementById("minutes").innerHTML = textminutes; 
+	var gMinutes = date.getMinutes();  
+var minuteIndex = 	document.getElementById("minutes").selectedIndex;
+var minuteOptions = 	document.getElementById("minutes").options;
+	  minuteOptions[minuteIndex].text = gMinutes;	  
+
   </script>
 </body>
 </html>
